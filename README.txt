@@ -12,3 +12,15 @@ the attribution or this README.
 John O. Woods, Ph.D.
 West Virginia University Applied Space Exploration Laboratory
 john.o.woods@gmail.com
+
+This is a latex template for International Astronautical Congress (IAC) 
+2018. It has been modified from John O. Woods, Ph.D. (West Virginia 
+University Applied Space Exploration Laboratory, john.o.woods@gmail.com).
+
+Stuff to do: 
+  - Update the authors in IACauthor, to include description in the bottom 
+    using table-notes environment. 
+  - The headings should be bold. 
+  - Subsection heading should be in italics on the left margin. 
+  - sub-subsection headings should be in italics on the left margin. 
+  - Update until the section 2 from the style-guide latex. 

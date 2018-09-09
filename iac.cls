@@ -22,6 +22,8 @@
 \RequirePackage{alphalph}
 
 \renewcommand{\headrulewidth}{0pt}
+%% Add section numbers in arabic rather than roman 5%
+\renewcommand*\sectionmark[1]{\markright{\thesection.\ #1}}
 
 \newcounter{authcount}
 \newcommand{\IACauthor}[2]{%
@@ -37,8 +39,8 @@
 \titlespacing{\section}{0pt}{*3}{*1.5}
 \titlespacing{\subsection}{0pt}{*2.5}{*0.5}
 \titlespacing{\subsubsection}{12pt}{*2}{*0.5}
-\titleformat{\section}{\centering\normalfont}{\Roman{section}. }{0.5em}{\uline{\textsc{#1}}}
-\titleformat{\subsection}{\normalfont}{\Roman{section}.\roman{subsection}}{0.5em}{\uline{#1}}
+\titleformat{\section}{\normalfont}{\bfseries\thesection.\ }{0.5em}{\uline{\textsc{#1}}}
+\titleformat{\subsection}{\normalfont}{\thesection.\arabic{subsection}}{0.5em}{\uline{#1}}
 \titleformat{\subsubsection}{\normalfont}{}{0pt}{\uline{#1}}
 
 \renewcommand{\abstract}[1]{\def\iac@abstract{#1}}
