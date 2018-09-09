@@ -17,6 +17,13 @@ This is a latex template for International Astronautical Congress (IAC)
 2018. It has been modified from John O. Woods, Ph.D. (West Virginia 
 University Applied Space Exploration Laboratory, john.o.woods@gmail.com).
 
+Compile sequence: 
+	- xelatex example (should work with pdflatex as well)
+	- bibtex example (reference enviroment)
+	- makeglossaries example (nomenclature & symbols)
+	- xelatex example
+	- xelatex example
+
 Stuff to do: 
   - Update the authors in IACauthor, to include description in the bottom 
     using table-notes environment. 
