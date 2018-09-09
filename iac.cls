@@ -42,6 +42,7 @@
 \titleformat{\subsubsection}{\normalfont}{}{0pt}{\uline{#1}}
 
 \renewcommand{\abstract}[1]{\def\iac@abstract{#1}}
+\newcommand{\IACkeywords}[6]{\def\iac@keywords{\textbf{keywords:} #1, #2, #3, #4, #5, #6}}
 \newcommand*{\IACpaperyear}[1]{\def\iac@paperyear{#1}}\IACpaperyear{}
 \newcommand*{\IACpapernumber}[1]{\def\iac@papernumber{#1}}\IACpapernumber{}
 \newcommand*{\IACconference}[1]{\def\iac@conference{#1}}\IACconference{}
@@ -94,6 +95,7 @@
     }%
   \end{center}%
   \indent\iac@abstract\par%
+  \indent\iac@keywords\par%
   \vskip 4.5ex}%
   \pagestyle{fancy}%
   

@@ -1,0 +1,31 @@
+% This packagae is used to make list of symbols and list of abbreviations at the start of the report. 
+% \makeglossaries
+% This is the syntax for the symbol 
+% \newglossaryentry{here comes the command you will use}
+% {
+%         name=here comes the symbol,
+%         description={Is a mark up language specially suited for 
+% scientific documents}
+% }
+% This is the syntax for abbreviations 
+% \newacronym{here comes the command you will use}{here comes the abbereviation}{here comes the full form of the abbreviation}
+
+% These are the commands to be used in the text:
+% For the symbol  
+% \gls{here comes the command you will use} -->  first letter small 
+% \Gls{here comes the command you will use} -->  first letter caps
+% \glspl{here comes the command you will use} -->  first letter small and plural 
+% \Glspl{here comes the command you will use} -->  first letter caps and plural 
+
+% For the abbreviations: 
+% \acrshort{here comes the command you will use} -> will use the abbreviation 
+% \acrlong{here comes the command you will use} -> will use the full form 
+% \acrfull{here comes the command you will use} -> will use the full form (abbreviation).  
+
+\newacronym{test}{TEST}{Test accronym}
+
+\newglossaryentry{test_symbol}
+{
+        name=$\theta_{test}$, 
+        description={Test symbols.}
+}
