@@ -27,7 +27,3 @@ Compile sequence:
 Stuff to do: 
   - Update the authors in IACauthor, to include description in the bottom 
     using table-notes environment. 
-  - The headings should be bold. 
-  - Subsection heading should be in italics on the left margin. 
-  - sub-subsection headings should be in italics on the left margin. 
-  - Update until the section 2 from the style-guide latex. 

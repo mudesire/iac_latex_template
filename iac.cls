@@ -39,9 +39,9 @@
 \titlespacing{\section}{0pt}{*3}{*1.5}
 \titlespacing{\subsection}{0pt}{*2.5}{*0.5}
 \titlespacing{\subsubsection}{12pt}{*2}{*0.5}
-\titleformat{\section}{\normalfont}{\bfseries\thesection.\ }{0.5em}{\uline{\textsc{#1}}}
-\titleformat{\subsection}{\normalfont}{\thesection.\arabic{subsection}}{0.5em}{\uline{#1}}
-\titleformat{\subsubsection}{\normalfont}{}{0pt}{\uline{#1}}
+\titleformat{\section}{\normalfont}{\bfseries\thesection.\ }{0.5em}{\uline{\textbf{\textsc{#1}}}}
+\titleformat{\subsection}{\normalfont}{\thesection.\arabic{subsection}}{0.5em}{\textit{\uline{#1}}}
+\titleformat{\subsubsection}{\normalfont}{\thesection.\arabic{subsection}.\arabic{subsubsection}}{0pt}{\textit{\uline{#1}}}
 
 \renewcommand{\abstract}[1]{\def\iac@abstract{#1}}
 \newcommand{\IACkeywords}[6]{\def\iac@keywords{\textbf{keywords:} #1, #2, #3, #4, #5, #6}}
