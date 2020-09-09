@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{iac}[2014/07/24 International Astronautical Congress conference paper LaTeX class]
+\ProvidesClass{iac}[2020/09/08 International Astronautical Congress conference paper LaTeX class]
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -8,7 +8,8 @@
 
 \LoadClass[twocolumn,letter paper,10pt]{article}
 
-\RequirePackage[margin=1in,top=1.25in,headheight=\baselineskip]{geometry} % page layout
+\RequirePackage[margin=1in,headheight=\baselineskip]{geometry}
+
 \RequirePackage{graphicx}
 %\RequirePackage{array}
 \RequirePackage{booktabs}
@@ -39,8 +40,8 @@
 \titlespacing{\section}{0pt}{*3}{*1.5}
 \titlespacing{\subsection}{0pt}{*2.5}{*0.5}
 \titlespacing{\subsubsection}{12pt}{*2}{*0.5}
-\titleformat{\section}{\normalfont}{\bfseries\thesection.\ }{0.5em}{\uline{\textbf{\textsc{#1}}}}
-\titleformat{\subsection}{\normalfont}{\thesection.\arabic{subsection}}{0.5em}{\textit{\uline{#1}}}
+\titleformat{\section}{\normalfont}{\bfseries\thesection.\ }{0.5em}{{\textbf{\textsc{#1}}}}
+\titleformat{\subsection}{\normalfont}{\thesection.\arabic{subsection}}{0.5em}{\textit{{#1}}}
 \titleformat{\subsubsection}{\normalfont}{\thesection.\arabic{subsection}.\arabic{subsubsection}}{0pt}{\textit{\uline{#1}}}
 
 \renewcommand{\abstract}[1]{\def\iac@abstract{#1}}
@@ -55,13 +56,13 @@
 \newcommand{\IACcopyrightB}[2]{\def\iac@copyright{Copyright \copyright\,#1 by #2. Published by the International Astronautical Federation with permission.}}
 \newcommand{\IACcopyrightC}{\def\iac@copyright{This material is declared a work of the U.S.\ Government and is not subject to copyright protection in the United States.}}
 \newcommand{\IACcopyrightD}[1]{\def\iac@copyright{Copyright \copyright\,#1 by the International Astronautical Federation. The U.S.\ Government has a royalty-free license to exercise all rights under the copyright claimed herein for Governmental purposes. All other rights are reserved by the copyright owner.}}
-\newcommand{\IACcopyrightDAPL}[1]{\def\iac@copyright{Copyright \copyright\,#1 by the International Astronautical Federation. Under the copyright claimed herein, the U.S.\ Government has a royalty-free license to exercise all rights for Governmental purposes. All other rights are reserved by the copyright owner.}} 
+\newcommand{\IACcopyrightDAPL}[1]{\def\iac@copyright{Copyright \copyright\,#1 by the International Astronautical Federation. Under the copyright claimed herein, the U.S.\ Government has a royalty-free license to exercise all rights for Governmental purposes. All other rights are reserved by the copyright owner.}}
 \newcommand\iac@makecopyright{{\iac@copyright}}
 
 \renewcommand\maketitle{\twocolumn[
   \begin{@twocolumnfalse}
-  \lhead{}\chead{\footnotesize \iac@conference th International Astronautical Congress, {\iac@location}. \iac@makecopyright}\rhead{}%
-  \lfoot{IAC--\iac@paperyear--\iac@papernumber}\cfoot{}\rfoot{Page \thepage\ of \pageref{LastPage}}%
+  \lhead{}\chead{\footnotesize \iac@conference th International Astronautical Congress-- {\iac@location}.\\ \iac@makecopyright}\rhead{}%
+  \lfoot{IAC-\iac@paperyear,\iac@papernumber}\cfoot{}\rfoot{Page \thepage\ of \pageref{LastPage}}%
   \begingroup
     \global\@topnum\z@   % Prevents figures from going at top of page.
     \@maketitle
@@ -81,26 +82,35 @@
   \begin{center}%
     IAC--\iac@paperyear--\iac@papernumber\par%
     \vskip1em
-    {\large \textsc{\@title} \par}%
-    \vskip 1.5em%
+    {\large \textbf{\@title} \par}%
+  \end{center}%
+    %\vskip 1.5em%
     {\large
-      \lineskip .5em%
+      %\lineskip .5em%
       \newcounter{authnum}%
       \setcounter{authnum}{0}
       \whileboolexpr
       { test {\ifnumcomp{\value{authnum}}{<}{\theauthcount}} }%
       {\stepcounter{authnum}%
-      	\normalsize\textbf{\csuse{iac@author\theauthnum}}\par%
-		\normalsize\csuse{iac@affiliation\theauthnum}\par%
-		\vskip 1.5ex%
-	  }%
+        	\normalsize\textbf{\csuse{iac@author\theauthnum}} %
+	   }%
+   \par%
+      \setcounter{authnum}{0}
+      \whileboolexpr
+      { test {\ifnumcomp{\value{authnum}}{<}{\theauthcount}} }%
+      {\stepcounter{authnum}%
+           \normalsize\csuse{iac@affiliation\theauthnum}\par%
+          }%
     }%
-  \end{center}%
+ \vskip 1.5ex%
+* Corresponding Author
+ \vskip 1.5ex%
   \indent\iac@abstract\par%
+   \vskip 1.5ex%
   \indent\iac@keywords\par%
   \vskip 4.5ex}%
   \pagestyle{fancy}%
-  
+
 \makeatletter
 \newcommand*{\fnsymbolsingle}[1]{%
   \ensuremath{%
@@ -124,3 +134,13 @@
 	\def\tagform@#1{\maketag@@@{[#1]\@@italiccorr}}
 \makeatother
 \endinput
+
+
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\prob}{p}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\etalia}{\textit{et al.}}
+\newcommand*{\vectornorm}[1]{\left\|#1\right\|}
+\newcommand*\rfrac[2]{{{}^{#1}\!/_{#2}}} % running fraction with slash - requires math mode.
+\newcommand*\T{\mathsf{T}}
