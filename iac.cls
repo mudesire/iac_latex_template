@@ -7,9 +7,7 @@
 \RequirePackage{amsfonts}
 
 \LoadClass[twocolumn,letter paper,10pt]{article}
-
-\RequirePackage[margin=1in,headheight=\baselineskip]{geometry}
-
+\RequirePackage[margin=1in,top=1.25in,headheight=\baselineskip]{geometry} % page layout
 \RequirePackage{graphicx}
 %\RequirePackage{array}
 \RequirePackage{booktabs}
@@ -21,6 +19,9 @@
 \RequirePackage[normalem]{ulem}
 \RequirePackage{etoolbox}
 \RequirePackage{alphalph}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=black}
+\urlstyle{same}
 
 \renewcommand{\headrulewidth}{0pt}
 %% Add section numbers in arabic rather than roman 5%
@@ -31,6 +32,10 @@
 	\stepcounter{authcount}%
 	\csdef{iac@author\theauthcount}{#1}%
 	\csdef{iac@affiliation\theauthcount}{#2}}
+
+\newcommand{\IACemail}[1]{%
+    \emph{\uline{\url{#1}}}
+}
 
 \setlength\parindent{12pt}
 \RequirePackage[]{caption}
@@ -62,7 +67,7 @@
 \renewcommand\maketitle{\twocolumn[
   \begin{@twocolumnfalse}
   \lhead{}\chead{\footnotesize \iac@conference th International Astronautical Congress-- {\iac@location}.\\ \iac@makecopyright}\rhead{}%
-  \lfoot{IAC-\iac@paperyear,\iac@papernumber}\cfoot{}\rfoot{Page \thepage\ of \pageref{LastPage}}%
+  \lfoot{IAC-\iac@paperyear-\iac@papernumber}\cfoot{}\rfoot{Page \thepage\ of \pageref{LastPage}}%
   \begingroup
     \global\@topnum\z@   % Prevents figures from going at top of page.
     \@maketitle
@@ -80,36 +85,42 @@
 \def\@maketitle{%
   \newpage
   \begin{center}%
-    IAC--\iac@paperyear--\iac@papernumber\par%
+    IAC-\iac@paperyear-\iac@papernumber\par%
     \vskip1em
     {\large \textbf{\@title} \par}%
   \end{center}%
     %\vskip 1.5em%
-    {\large
+  {\large
       %\lineskip .5em%
       \newcounter{authnum}%
-      \setcounter{authnum}{0}
-      \whileboolexpr
-      { test {\ifnumcomp{\value{authnum}}{<}{\theauthcount}} }%
-      {\stepcounter{authnum}%
-        	\normalsize\textbf{\csuse{iac@author\theauthnum}} %
-	   }%
-   \par%
-      \setcounter{authnum}{0}
-      \whileboolexpr
-      { test {\ifnumcomp{\value{authnum}}{<}{\theauthcount}} }%
-      {\stepcounter{authnum}%
-           \normalsize\csuse{iac@affiliation\theauthnum}\par%
-          }%
-    }%
- \vskip 1.5ex%
+          \makeatletter
+          { \setcounter{authnum}{0}
+              \whileboolexpr
+              { test {\ifnumcomp{\value{authnum}}{<}{\theauthcount}} }%
+              {\stepcounter{authnum}%
+                	\normalsize\textbf{\csuse{iac@author\theauthnum}} %
+        	   }%
+          }\makeatother
+           \par%
+           \vskip 1.5ex%
+          \makeatletter
+         {\setcounter{authnum}{0}
+              \whileboolexpr
+              { test {\ifnumcomp{\value{authnum}}{<}{\theauthcount}} }%
+              {\stepcounter{authnum}%
+                   \normalsize\csuse{iac@affiliation\theauthnum}\par%
+              }%
+         }%
+         \makeatother
+}%
+\vskip 1.5ex%
 * Corresponding Author
- \vskip 1.5ex%
-  \indent\iac@abstract\par%
-   \vskip 1.5ex%
-  \indent\iac@keywords\par%
-  \vskip 4.5ex}%
-  \pagestyle{fancy}%
+\vskip 1.5ex%
+\indent\iac@abstract\par%
+\vskip 1.5ex%
+\indent\iac@keywords\par%
+\vskip 4.5ex}%
+\pagestyle{fancy}%
 
 \makeatletter
 \newcommand*{\fnsymbolsingle}[1]{%
@@ -144,3 +155,5 @@
 \newcommand*{\vectornorm}[1]{\left\|#1\right\|}
 \newcommand*\rfrac[2]{{{}^{#1}\!/_{#2}}} % running fraction with slash - requires math mode.
 \newcommand*\T{\mathsf{T}}
+
+
